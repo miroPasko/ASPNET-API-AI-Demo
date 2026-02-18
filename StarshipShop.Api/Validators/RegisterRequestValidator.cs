@@ -21,9 +21,7 @@ public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
             .EmailAddress()
             .WithMessage("Email must be a valid email address")
             .MaximumLength(255)
-            .WithMessage("Email must not exceed 255 characters")
-            .Must(email => email == null || email == email.ToLowerInvariant())
-            .WithMessage("Email must be lowercase");
+            .WithMessage("Email must not exceed 255 characters");
 
         RuleFor(x => x.Password)
             .NotEmpty()
