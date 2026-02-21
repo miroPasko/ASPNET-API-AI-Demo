@@ -42,6 +42,8 @@ builder.Services.AddAuthorization();
 // Register services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IStarshipService, StarshipService>();
+builder.Services.AddScoped<IEngineService, EngineService>();
+builder.Services.AddScoped<IFtlDriveService, FtlDriveService>();
 
 // Add OpenAPI
 builder.Services.AddOpenApi();
@@ -76,6 +78,16 @@ var starshipsGroup = app.MapGroup("/api/starships")
     .RequireAuthorization()
     .WithTags("Starships");
 starshipsGroup.MapStarshipRoutes();
+
+var enginesGroup = app.MapGroup("/api/engines")
+    .RequireAuthorization()
+    .WithTags("Engines");
+enginesGroup.MapEngineRoutes();
+
+var ftlDrivesGroup = app.MapGroup("/api/ftl-drives")
+    .RequireAuthorization()
+    .WithTags("FtlDrives");
+ftlDrivesGroup.MapFtlDriveRoutes();
 
 app.Run();
 
