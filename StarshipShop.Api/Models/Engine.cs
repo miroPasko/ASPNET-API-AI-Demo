@@ -27,5 +27,14 @@ public class Engine
     [Column("fuel_usage")]
     public double FuelUsage { get; set; }
 
+    [Required]
+    [MaxLength(200)]
+    [Column("manufacturer")]
+    public string Manufacturer { get; set; } = null!;
+
+    [Required]
+    [Column("price", TypeName = "decimal(18,2)")]
+    public decimal Price { get; set; }
+
     public ICollection<Starship> Starships { get; set; } = [];
 }
